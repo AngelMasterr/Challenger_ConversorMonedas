@@ -49,7 +49,7 @@ public class MiConversor {
 		frmConversor.getContentPane().setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(149, 113, 86, 20);
+		textField.setBounds(149, 105, 86, 20);
 		frmConversor.getContentPane().add(textField);
 		textField.setColumns(10);
 		
@@ -58,7 +58,7 @@ public class MiConversor {
 		frmConversor.getContentPane().add(comboBox);
 		
 		JButton btnNewButton = new JButton("Convertir");
-		btnNewButton.setBounds(149, 156, 86, 20);
+		btnNewButton.setBounds(149, 133, 86, 20);
 		frmConversor.getContentPane().add(btnNewButton);
 		
 		JLabel titulo = new JLabel("Seleccione las divisas a convertir");
@@ -66,7 +66,7 @@ public class MiConversor {
 		titulo.setBounds(94, 20, 195, 16);
 		frmConversor.getContentPane().add(titulo);
 		
-		JLabel lblNewLabel_1 = new JLabel("<----->");
+		JLabel lblNewLabel_1 = new JLabel("----->");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(169, 70, 46, 14);
 		frmConversor.getContentPane().add(lblNewLabel_1);
@@ -74,6 +74,12 @@ public class MiConversor {
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(70, 66, 86, 22);
 		frmConversor.getContentPane().add(comboBox_1);
+		
+		JLabel lblNewLabel = new JLabel("Resultado");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel.setBounds(156, 172, 71, 14);
+		frmConversor.getContentPane().add(lblNewLabel);
 	}
 }
 

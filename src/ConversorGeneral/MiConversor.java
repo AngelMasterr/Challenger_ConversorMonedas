@@ -41,6 +41,7 @@ public class MiConversor {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
 	private void initialize() {
 		frmConversor = new JFrame();
 		frmConversor.setTitle("Conversor");

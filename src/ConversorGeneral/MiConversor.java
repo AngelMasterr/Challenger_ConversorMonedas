@@ -15,6 +15,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.security.DrbgParameters.Capability;
 import java.text.DecimalFormat;
+import java.util.EnumSet;
+
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
@@ -44,6 +46,7 @@ public class MiConversor {
 	        this.valor = valor;
 	    }
 	}
+	
 	public enum Longitud{
 		Kilometro(1000),
 		Hectometro(100),

@@ -123,7 +123,7 @@ public class MiConversor {
 		lblResultado = new JLabel("Resultado");
 		lblResultado.setHorizontalAlignment(SwingConstants.CENTER);
 		lblResultado.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblResultado.setBounds(71, 170, 242, 14);
+		lblResultado.setBounds(71, 170, 242, 20);
 		frmConversor.getContentPane().add(lblResultado);	
 		
 		comboBox_1 = new JComboBox();

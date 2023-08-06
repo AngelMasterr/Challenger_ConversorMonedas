@@ -49,15 +49,17 @@ public class MiConversor {
 	    }
 	}	
 	public enum Temperatura{
-		Celsius(0),
-		Kelvin(32),
-		Fahrenheit(273.15),
-		Rankine(491.67),
-		Reaumur(0);
+		Celsius(-273.15, 100, 373.15),
+		Kelvin(0, 373.15, 373.15),
+		Fahrenheit(-459.67, 212, 671.67),
+		Rankine(0, 671.67, 671.67),
+		Reaumur(-218.52, 80, 298.52);
 
-	    private double valor;
-	    Temperatura(double valor) {
-	        this.valor = valor;
+	    private double valorMin, valorMax, valorAcom;
+	    Temperatura(double valormin, double valormax, double valoracom) {
+	        this.valorMin = valormin;
+	        this.valorMax = valormax;
+	        this.valorAcom = valoracom;
 	    }
 	}
 	public enum Longitud{
@@ -125,9 +127,10 @@ public class MiConversor {
 		btnConvertir.setBounds(149, 167, 86, 20);
 		frmConversor.getContentPane().add(btnConvertir);
 		
-		JLabel lblTitulo = new JLabel("Seleccione las divisas a convertir");
+		JLabel lblTitulo = new JLabel("Seleccione la Divisa a convertir");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblTitulo.setBounds(105, 53, 174, 16);
+		lblTitulo.setBounds(87, 53, 210, 16);
 		frmConversor.getContentPane().add(lblTitulo);
 		
 		JLabel lblFlecha = new JLabel(">>>");
@@ -165,12 +168,13 @@ public class MiConversor {
 		rdbtnDivisas.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnDivisas.setBounds(38, 19, 59, 23);
 		frmConversor.getContentPane().add(rdbtnDivisas);
-		rdbtnDivisas.addActionListener(new ActionListener() {			
+		rdbtnDivisas.addActionListener(new ActionListener() {	
+			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+			public void actionPerformed(ActionEvent e) {				
 				comboBox_1.setModel(new DefaultComboBoxModel(Moneda.values()));				
 				comboBox_2.setModel(new DefaultComboBoxModel(Moneda.values()));
+				lblTitulo.setText("Seleccione la Divisa a convertir");
 			}
 		});	
 		
@@ -179,12 +183,13 @@ public class MiConversor {
 		rdbtnTemperatura.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnTemperatura.setBounds(135, 19, 97, 23);
 		frmConversor.getContentPane().add(rdbtnTemperatura);
-		rdbtnTemperatura.addActionListener(new ActionListener() {			
+		rdbtnTemperatura.addActionListener(new ActionListener() {	
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				comboBox_1.setModel(new DefaultComboBoxModel(Temperatura.values()));				
 				comboBox_2.setModel(new DefaultComboBoxModel(Temperatura.values()));
+				lblTitulo.setText("Seleccione la Temperatura a convertir");
 			}
 		});	
 		
@@ -193,21 +198,22 @@ public class MiConversor {
 		rdbtnLongitud.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnLongitud.setBounds(270, 19, 73, 23);
 		frmConversor.getContentPane().add(rdbtnLongitud);
-		rdbtnLongitud.addActionListener(new ActionListener() {			
+		rdbtnLongitud.addActionListener(new ActionListener() {	
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				comboBox_1.setModel(new DefaultComboBoxModel(Longitud.values()));				
 				comboBox_2.setModel(new DefaultComboBoxModel(Longitud.values()));
+				lblTitulo.setText("Seleccione la Longitud a convertir");
 			}
 		});		
 	}
 	
 	// crear la funcion que convierta el valor en la unidad deseada
-	private void Convertir() {			
-				
+	private void Convertir() {	
+		
 		String cantidad_text = tf_cantidad1.getText();
-		double cantidad_double = 0;
+		double cantidad_double = 123987;
 		double resultado = 0;
 		
         try {
@@ -215,10 +221,10 @@ public class MiConversor {
         	cantidad_double = Double.parseDouble(cantidad_text);
             System.out.println("El número double es: " + cantidad_text);
         } catch (NumberFormatException e) {
-            System.err.println("El formato del número no es válido.");
-        }
-		
-        if (cantidad_double != 0) {
+            System.err.println("El formato del número no es válido.");            
+        }        
+        		
+        if (cantidad_double != 123987) {
         	if (rdbtnDivisas.isSelected()) {		
     			Moneda moneda1 = (Moneda) comboBox_1.getSelectedItem();
     			Moneda moneda2 = (Moneda) comboBox_2.getSelectedItem();
@@ -232,16 +238,17 @@ public class MiConversor {
     		else if (rdbtnTemperatura.isSelected()) {
     			Temperatura temperatura1 = (Temperatura) comboBox_1.getSelectedItem();
     			Temperatura temperatura2 = (Temperatura) comboBox_2.getSelectedItem();
-    			
+    			resultado = (cantidad_double - temperatura1.valorMin) * (temperatura2.valorAcom / temperatura1.valorAcom) + temperatura2.valorMin;
     		}	        
 	        DecimalFormat df = new DecimalFormat("#.######");
 	        String valorRedondeado = df.format(resultado);	        
-	        lblResultado.setText(valorRedondeado);
-	        
-        }else {
+	        lblResultado.setText(valorRedondeado);	        
+        }
+        else {
         	lblResultado.setText("Introduzca un número mayor a cero");
         }
 		
-	} 
+	} 	
+	
 }
 

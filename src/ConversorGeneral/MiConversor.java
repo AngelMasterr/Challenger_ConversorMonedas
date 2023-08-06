@@ -49,11 +49,11 @@ public class MiConversor {
 	    }
 	}	
 	public enum Temperatura{
-		Celsius(1),
-		Kelvin(4171.78),
-		Fahrenheit(4570.38),
-		Rankine(5325.52),
-		Reaumur(29.27);
+		Celsius(0),
+		Kelvin(32),
+		Fahrenheit(273.15),
+		Rankine(491.67),
+		Reaumur(0);
 
 	    private double valor;
 	    Temperatura(double valor) {
@@ -203,7 +203,7 @@ public class MiConversor {
 		});		
 	}
 	
-	// crear la funcion que convierta el valor a la divisa deseada
+	// crear la funcion que convierta el valor en la unidad deseada
 	private void Convertir() {			
 				
 		String cantidad_text = tf_cantidad1.getText();
@@ -211,6 +211,7 @@ public class MiConversor {
 		double resultado = 0;
 		
         try {
+        	// Convertir el string "cantidad" en double
         	cantidad_double = Double.parseDouble(cantidad_text);
             System.out.println("El número double es: " + cantidad_text);
         } catch (NumberFormatException e) {

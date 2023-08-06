@@ -204,30 +204,11 @@ public class MiConversor {
 	}
 	
 	// crear la funcion que convierta el valor a la divisa deseada
-	private void Convertir() {
-
-		Moneda moneda1 = null;
-		Moneda moneda2 = null;
-		Temperatura temperatura1;
-		Temperatura temperatura2;
-		Longitud longitud1;
-		Longitud longitud2;
-		
-		if (rdbtnDivisas.isSelected()) {		
-			moneda1 = (Moneda) comboBox_1.getSelectedItem();
-			moneda2 = (Moneda) comboBox_2.getSelectedItem();
-		}
-		else if (rdbtnTemperatura.isSelected()) {
-			temperatura1 = (Temperatura) comboBox_1.getSelectedItem();
-			temperatura2 = (Temperatura) comboBox_2.getSelectedItem();			
-		}
-		else if (rdbtnTemperatura.isSelected()) {
-			longitud1 = (Longitud) comboBox_1.getSelectedItem();
-			longitud2 = (Longitud) comboBox_2.getSelectedItem();			
-		}
-		
+	private void Convertir() {			
+				
 		String cantidad_text = tf_cantidad1.getText();
 		double cantidad_double = 0;
+		double resultado = 0;
 		
         try {
         	cantidad_double = Double.parseDouble(cantidad_text);
@@ -237,8 +218,21 @@ public class MiConversor {
         }
 		
         if (cantidad_double != 0) {
-        	
-			double resultado = cantidad_double * moneda1.valor / moneda2.valor; 	        
+        	if (rdbtnDivisas.isSelected()) {		
+    			Moneda moneda1 = (Moneda) comboBox_1.getSelectedItem();
+    			Moneda moneda2 = (Moneda) comboBox_2.getSelectedItem();
+    			resultado = cantidad_double * moneda1.valor / moneda2.valor;
+    		}
+    		else if (rdbtnLongitud.isSelected()) {
+    			Longitud longitud1 = (Longitud) comboBox_1.getSelectedItem();
+    			Longitud longitud2 = (Longitud) comboBox_2.getSelectedItem();	
+    			resultado = cantidad_double * longitud1.valor / longitud2.valor;
+    		}
+    		else if (rdbtnTemperatura.isSelected()) {
+    			Temperatura temperatura1 = (Temperatura) comboBox_1.getSelectedItem();
+    			Temperatura temperatura2 = (Temperatura) comboBox_2.getSelectedItem();
+    			
+    		}	        
 	        DecimalFormat df = new DecimalFormat("#.######");
 	        String valorRedondeado = df.format(resultado);	        
 	        lblResultado.setText(valorRedondeado);

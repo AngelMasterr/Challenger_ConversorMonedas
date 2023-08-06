@@ -11,6 +11,8 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.security.DrbgParameters.Capability;
@@ -45,8 +47,19 @@ public class MiConversor {
 	    Moneda(double valor) {
 	        this.valor = valor;
 	    }
+	}	
+	public enum Temperatura{
+		Celsius(1),
+		Kelvin(4171.78),
+		Fahrenheit(4570.38),
+		Rankine(5325.52),
+		Reaumur(29.27);
+
+	    private double valor;
+	    Temperatura(double valor) {
+	        this.valor = valor;
+	    }
 	}
-	
 	public enum Longitud{
 		Kilometro(1000),
 		Hectometro(100),
@@ -142,7 +155,7 @@ public class MiConversor {
 		
 		comboBox_2 = new JComboBox();
 		comboBox_2.setBackground(new Color(255, 255, 255));
-		comboBox_2.setModel(new DefaultComboBoxModel(Longitud.values()));
+		comboBox_2.setModel(new DefaultComboBoxModel(Moneda.values()));
 		comboBox_2.setBounds(226, 86, 86, 22);
 		frmConversor.getContentPane().add(comboBox_2);		 
 		
@@ -152,26 +165,67 @@ public class MiConversor {
 		rdbtnDivisas.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnDivisas.setBounds(38, 19, 59, 23);
 		frmConversor.getContentPane().add(rdbtnDivisas);
+		rdbtnDivisas.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				comboBox_1.setModel(new DefaultComboBoxModel(Moneda.values()));				
+				comboBox_2.setModel(new DefaultComboBoxModel(Moneda.values()));
+			}
+		});	
 		
 		rdbtnTemperatura = new JRadioButton("Temperatura");
 		buttonGroup.add(rdbtnTemperatura);
 		rdbtnTemperatura.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnTemperatura.setBounds(135, 19, 97, 23);
 		frmConversor.getContentPane().add(rdbtnTemperatura);
+		rdbtnTemperatura.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				comboBox_1.setModel(new DefaultComboBoxModel(Temperatura.values()));				
+				comboBox_2.setModel(new DefaultComboBoxModel(Temperatura.values()));
+			}
+		});	
 		
 		rdbtnLongitud = new JRadioButton("Longitud");
 		buttonGroup.add(rdbtnLongitud);
 		rdbtnLongitud.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		rdbtnLongitud.setBounds(270, 19, 73, 23);
 		frmConversor.getContentPane().add(rdbtnLongitud);
-		
+		rdbtnLongitud.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				comboBox_1.setModel(new DefaultComboBoxModel(Longitud.values()));				
+				comboBox_2.setModel(new DefaultComboBoxModel(Longitud.values()));
+			}
+		});		
 	}
 	
 	// crear la funcion que convierta el valor a la divisa deseada
 	private void Convertir() {
 
-		Moneda moneda1 = (Moneda) comboBox_1.getSelectedItem();
-		Longitud moneda2 = (Longitud) comboBox_2.getSelectedItem();		
+		Moneda moneda1 = null;
+		Moneda moneda2 = null;
+		Temperatura temperatura1;
+		Temperatura temperatura2;
+		Longitud longitud1;
+		Longitud longitud2;
+		
+		if (rdbtnDivisas.isSelected()) {		
+			moneda1 = (Moneda) comboBox_1.getSelectedItem();
+			moneda2 = (Moneda) comboBox_2.getSelectedItem();
+		}
+		else if (rdbtnTemperatura.isSelected()) {
+			temperatura1 = (Temperatura) comboBox_1.getSelectedItem();
+			temperatura2 = (Temperatura) comboBox_2.getSelectedItem();			
+		}
+		else if (rdbtnTemperatura.isSelected()) {
+			longitud1 = (Longitud) comboBox_1.getSelectedItem();
+			longitud2 = (Longitud) comboBox_2.getSelectedItem();			
+		}
+		
 		String cantidad_text = tf_cantidad1.getText();
 		double cantidad_double = 0;
 		

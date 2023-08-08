@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>D:\ANGEL\0. JAVA\eclipse-workspace\Challenger_ConversorMonedas\ChallengerConversor_Divisas_Temp_Long.jar</jar>
+  <outfile>Conversor Divisas_Temp_long.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>https://www.java.com/es/download/ie_manual.jsp</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon></icon>
+  <jre>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion>1.8.0</minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+  <versionInfo>
+    <fileVersion>1.0.0.1</fileVersion>
+    <txtFileVersion>virus</txtFileVersion>
+    <fileDescription>aprendiendo</fileDescription>
+    <copyright>AngelMasterr</copyright>
+    <productVersion>1.0.0.2</productVersion>
+    <txtProductVersion>virus</txtProductVersion>
+    <productName>Conversor</productName>
+    <companyName>AngelMasterr</companyName>
+    <internalName>Conversor </internalName>
+    <originalFilename>Conversor Divisas_Temp_long.exe</originalFilename>
+    <trademarks></trademarks>
+    <language>ENGLISH_US</language>
+  </versionInfo>
+</launch4jConfig>

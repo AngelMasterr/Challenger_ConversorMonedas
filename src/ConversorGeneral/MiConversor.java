@@ -245,7 +245,7 @@ public class MiConversor {
 	        lblResultado.setText(valorRedondeado);	        
         }
         else {
-        	lblResultado.setText("Introduzca un número mayor a cero");
+        	lblResultado.setText("Introduzca un valor numerico");
         }
 		
 	} 	

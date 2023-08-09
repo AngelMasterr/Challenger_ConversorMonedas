@@ -174,7 +174,7 @@ public class MiConversor {
 			public void actionPerformed(ActionEvent e) {				
 				comboBox_1.setModel(new DefaultComboBoxModel(Moneda.values()));				
 				comboBox_2.setModel(new DefaultComboBoxModel(Moneda.values()));
-				lblTitulo.setText("Seleccione la Divisa a convertir");
+				lblTitulo.setText("Seleccione la Divisa a convertir.");
 			}
 		});	
 		
@@ -189,7 +189,7 @@ public class MiConversor {
 			public void actionPerformed(ActionEvent e) {
 				comboBox_1.setModel(new DefaultComboBoxModel(Temperatura.values()));				
 				comboBox_2.setModel(new DefaultComboBoxModel(Temperatura.values()));
-				lblTitulo.setText("Seleccione la Temperatura a convertir");
+				lblTitulo.setText("Seleccione la Temperatura a convertir.");
 			}
 		});	
 		
@@ -204,7 +204,7 @@ public class MiConversor {
 			public void actionPerformed(ActionEvent e) {
 				comboBox_1.setModel(new DefaultComboBoxModel(Longitud.values()));				
 				comboBox_2.setModel(new DefaultComboBoxModel(Longitud.values()));
-				lblTitulo.setText("Seleccione la Longitud a convertir");
+				lblTitulo.setText("Seleccione la Longitud a convertir.");
 			}
 		});		
 	}
